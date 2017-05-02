@@ -477,10 +477,10 @@ namespace CommandLine
             var helpWriter = _settings.HelpWriter;
             if (helpInfo != null && helpWriter != null)
             {
-                if (string.Compare(args[0], helpInfo.Right.LongName, GetStringComparison(_settings)) == 0)
+                if (string.Compare(args[0].Trim('-'), helpInfo.Right.LongName, GetStringComparison(_settings)) == 0)
                 {
                     // User explicitly requested help
-                    var verb = args.FirstOrDefault();
+                    var verb = args.Length > 1 ? args[1] : args[0];
                     if (verb != null)
                     {
                         var verbOption = optionMap[verb];
